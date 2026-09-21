@@ -1,0 +1,9 @@
+Agenda of the proogram
+
+1) Python basics
+2) MongoDB commands or queries
+3) FastAPI basics
+4) REST API basics
+5) REST API - CRUD Operations
+6) Frontend Skills - HTML, CSS, JS, BS & React
+7) Integrate both Frontend & Backend

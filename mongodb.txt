@@ -1,0 +1,345 @@
+naming conventions:
+upper case - AKSHAYRAO
+lower case - akshayrao
+pascal case - AkshayRao
+camel case - akshayRao
+snake case - akshay_rao
+
+DB - Database
+
+Database referes to Collection of Tables
+
+Table: Collection of Rows & Columns
+
+Row - Records
+Column - Entities
+
+DBMS - Database Management System
+
+SQL - Structured Query Language
+
+2 Types of DB:
+SQL - Structured (Table format) - MySQL, Oracle SQL, SQLite, PostgreSQL
+NoSQL - Unstructured (Colletion Format - BSON) - MongoDB
+
+JSON - JavaScript Object Notation
+BSON - Binary JSON
+
+Student
+SQL - Name Age DOB Address
+100 students registered 
+SQL - Name Age DOB Phone Address
+100 students registered - Additional column is created and all 100 rows allocate with empty space
+
+In NoSQL
+It will allocate the space from new row and doesn't care about old data
+
+SQL - Structured Data
+MongoDB - MQL (MongoDB Query Language)
+
+MySQL           MongoDB
+db                 db
+table              collections
+rows/records       documents
+column             field
+primary_key        _id
+
+MQL Queries:
+1) To check the list of databases:
+-> show dbs
+
+2) To create or switch to db:
+Syntax: use database_name;
+
+Ex: use demo_db;
+
+3) Creating collection(table) in mongoDB:
+Syntax: db.createCollection("collection_name");
+
+Example: db.createCollection("college");
+
+4) To check the list of collections:
+-> show collections
+
+CRUD Operations:
+C - CREATE/INSERT - insertOne, insertMany
+R - READ/FETCH - find, findOne
+U - UPDATE
+D - DELETE
+
+5) To insert one document in the collection: insertOne()
+Syntax: db.collection.insertOne({"key1" : "value1", "key2" : "value2"})
+
+Example: db.college.insertOne(
+    {
+        "name": "NIE", 
+        "location": "North Campus", 
+        "city": "Mysuru", 
+        "affliation": "VTU (Autonomous)"
+    }
+)
+
+db.college.insertOne(
+    {
+        "name": "NIE", 
+        "location": "South Campus", 
+        "city": "Mysuru", 
+        "affiliation": "VTU (Autonomous)",
+        "branches" : "ECE, CIVIL, MECH"
+    }
+)
+
+6) To insert bulk documents in the collection: insertMany()
+Syntax: db.collection.insertMany([{"key1" : "value1", "key2" : "value2"},{"key1" : "value1", "key2" : "value2"}])
+
+Example: 
+db.college.insertMany([
+    {
+        "name": "Maharaja College", 
+        "city": "Mysuru", 
+        "affiliation": "Mysuru University",
+        "specilization" : "B.E, B.Com, B.Sc"
+    },
+    {
+        "name": "Bn Bahadur Institute of Management Studies",  
+        "city": "Mysuru", 
+        "established": 2002, 
+        "affiliation": "Mysuru University",
+        "branches" : "BBA, MBA"
+    }
+])
+
+6) To check or read the inserted documents: find()
+Syntax: db.collection.find()
+
+Ex: db.college.find()
+
+Ex: db.college.find({
+    "location" : "North Campus"
+})
+
+db.college.find({
+    "affiliation": "Mysuru University",
+})
+
+New Collection: students
+
+db.createCollection("students")
+
+db.students.insertMany(
+    [
+        {
+            "name" : "Hemanth",
+            "age" : 26,
+            "branch" : "ISE",
+            "section" : "A",
+            "sem" : 8
+        },
+        {
+            "name" : "Sumanth",
+            "age" : 26,
+            "branch" : "ECE",
+            "section" : "B",
+            "sem" : 6
+        },
+        {
+            "name" : "Vijay Kumar",
+            "age" : 22,
+            "branch" : "ISE",
+            "section" : "A",
+            "sem" : 2
+        },
+        {
+            "name" : "Sujay",
+            "age" : 26,
+            "branch" : "CSE",
+            "section" : "A",
+            "sem" : 8
+        }
+    ]
+)
+
+db.students.find()
+
+db.students.find(
+    {
+        "section" : "A"
+    }
+)
+
+Don't use double quote for integer values:
+age - int => "age" : 25 ✅ and not "age" : "25" ❌
+db.students.find(
+    {
+        "sem" : 8
+    }
+)
+
+$gt - greater than
+$lt - lesser than
+$eq - equal to
+$ne - not equal to
+$gte - greater than or equal to
+$lte - lesser than or equal to
+
+While using comparison operators:
+Syntax:
+db.collection.find(
+    {
+        field : { $operator : value }
+    }
+)
+
+db.students.find(
+    {
+        age : { $gt : 24 }
+    }
+)
+
+db.students.find(
+    {
+        age : { $lt : 24 }
+    }
+)
+
+db.students.find(
+    {
+        age : { $lte : 24 }
+    }
+)
+
+db.students.find(
+    {
+        age : { $eq : 24 }
+    }
+)
+
+db.students.find(
+    {
+        age : { $ne : 24 }
+    }
+)
+
+7) To update the existing documents: updateOne()
+Syntax: db.collection.updateOne(
+    { field : value },
+    { $set : { field : new_value, field2 : value2 } }
+)
+
+db.college.updateOne(
+    {
+        location: 'North Campus'
+    },
+    {
+        $set : {
+            college_code : "NIE-N"
+        }
+    }
+)
+
+db.college.updateOne(
+    {
+        location: 'South Campus'
+    },
+    {
+        $set : {
+            college_code : "NIE-S",
+            cet_code : "NIES123"
+        }
+    }
+)
+
+8) To update the multiple documents: updateMany()
+Syntax: db.collection.updateMany(
+    { field : value },
+    { $set : { field : new_value, field2 : value2 } }
+)
+
+db.college.updateMany(
+    {
+        city : "Mysuru"
+    }, 
+    {
+        $set : {
+            district : "Mysuru",
+            "state" : "Karnataka"
+        }
+    }
+)
+
+db.college.updateMany(
+    {
+        affiliation : "Mysuru University"
+    }, 
+    {
+        $set : {
+            affiliation : "Kuvempu University"
+        }
+    }
+)
+
+$and & $or logical operators:
+Syntax:
+db.collection.find({
+    $and / $or : [
+        { field1 : value1 },
+        { field2 : value2 }
+    ]
+})
+
+Ex:
+db.students.find({
+    $and : [
+        { branch : "CSE" },
+        { section : "A" }
+    ]
+})
+
+In another way, to use "and" condition
+db.students.find(
+    { 
+        branch : "CSE", section : "A" 
+    }
+)
+
+db.students.find({
+    $and : [
+        { branch : "CSE" },
+        { age : 26 }
+    ]
+})
+
+db.students.find({
+    $or : [
+        { branch : "CSE" },
+        { age : 26 }
+    ]
+})
+
+9) To delete the existing document: deleteOne()
+Syntax: db.collection.deleteOne(
+    { field1 : value1 }
+)
+
+Ex:
+db.college.deleteOne(
+    { established : 2002 }
+)
+
+db.students.deleteOne(
+    { name: 'Hemanth' }
+)
+
+10) To delete multiple documents: deleteMany()
+Syntax: db.collection.deleteMany(
+    { field1 : value1 }
+)
+
+Ex:
+db.students.deleteMany(
+    { branch : "CSE", sem : 8 }
+)
+
+db.students.deleteMany(
+    { age : { $gt: 21 } }
+)

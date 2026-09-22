@@ -70,3 +70,5 @@ sayHi("Ajay")
 sayHi("Aruna")
 sayHi("Amulya")
 sayHi("Arvind")
+
+print(trainings.values())

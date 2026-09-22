@@ -1,0 +1,11 @@
+# pip install virtualenv
+
+# virtualenv venv312
+# or
+# python -m virtualenv venv312
+
+# venv312\Scripts\activate
+
+# pip install fastapi uvicorn
+
+pip list

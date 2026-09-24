@@ -1,0 +1,41 @@
+meta {
+  name: 07 Login Admin
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{base_url}}/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:text {
+  username=aarav_admin&password=aarav%40123
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("admin_token", res.body.access_token);
+  }
+}
+
+tests {
+  test("Status is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}
+
+docs {
+  07 Login Admin.
+  Endpoint: POST {{base_url}}/login
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

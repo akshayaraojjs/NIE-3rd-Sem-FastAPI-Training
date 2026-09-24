@@ -1,0 +1,41 @@
+meta {
+  name: 08 Login Teacher
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{base_url}}/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:text {
+  username=priya_teacher&password=priya%40123
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("teacher_token", res.body.access_token);
+  }
+}
+
+tests {
+  test("Request completed", function() {
+    expect(res.status).to.be.within(200, 299);
+  });
+}
+
+docs {
+  08 Login Teacher.
+  Endpoint: POST {{base_url}}/login
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

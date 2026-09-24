@@ -1,0 +1,39 @@
+meta {
+  name: 28 Invalid Register Payload
+  type: http
+  seq: 28
+}
+
+post {
+  url: {{base_url}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "ab",
+    "password": "12345",
+    "role": 4
+  }
+}
+
+tests {
+  test("Status is 422", function() {
+    expect(res.status).to.equal(422);
+  });
+}
+
+docs {
+  28 Invalid Register Payload.
+  Endpoint: POST {{base_url}}/users
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

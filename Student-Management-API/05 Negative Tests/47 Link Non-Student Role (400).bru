@@ -1,0 +1,41 @@
+meta {
+  name: 47 Link Non-Student Role (400)
+  type: http
+  seq: 47
+}
+
+post {
+  url: {{base_url}}/students
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{admin_token}}
+}
+
+body:json {
+  {
+    "name": "Kabir Singh",
+    "age": 20,
+    "course": "Physics",
+    "user_id": "{{admin_user_id}}"
+  }
+}
+
+tests {
+  test("Status is 400", function() {
+    expect(res.status).to.equal(400);
+  });
+}
+
+docs {
+  47 Link Non-Student Role (400).
+  Endpoint: POST {{base_url}}/students
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

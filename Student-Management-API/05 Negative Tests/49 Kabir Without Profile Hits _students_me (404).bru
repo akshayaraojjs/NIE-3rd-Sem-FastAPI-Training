@@ -1,0 +1,31 @@
+meta {
+  name: 49 Kabir Without Profile Hits /students/me (404)
+  type: http
+  seq: 49
+}
+
+get {
+  url: {{base_url}}/students/me
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{kabir_token}}
+}
+
+tests {
+  test("Status is 404", function() {
+    expect(res.status).to.equal(404);
+  });
+}
+
+docs {
+  49 Kabir Without Profile Hits /students/me (404).
+  Endpoint: GET {{base_url}}/students/me
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

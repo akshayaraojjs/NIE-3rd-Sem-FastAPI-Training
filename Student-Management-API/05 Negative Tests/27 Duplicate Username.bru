@@ -1,0 +1,39 @@
+meta {
+  name: 27 Duplicate Username
+  type: http
+  seq: 27
+}
+
+post {
+  url: {{base_url}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "aarav_admin",
+    "password": "aarav@123",
+    "role": 1
+  }
+}
+
+tests {
+  test("Status is 409", function() {
+    expect(res.status).to.equal(409);
+  });
+}
+
+docs {
+  27 Duplicate Username.
+  Endpoint: POST {{base_url}}/users
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

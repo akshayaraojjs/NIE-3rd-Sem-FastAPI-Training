@@ -1,0 +1,31 @@
+meta {
+  name: 42 Non-existent Student ID (404)
+  type: http
+  seq: 42
+}
+
+get {
+  url: {{base_url}}/students/000000000000000000000000
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{admin_token}}
+}
+
+tests {
+  test("Status is 404", function() {
+    expect(res.status).to.equal(404);
+  });
+}
+
+docs {
+  42 Non-existent Student ID (404).
+  Endpoint: GET {{base_url}}/students/000000000000000000000000
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

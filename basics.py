@@ -72,3 +72,44 @@ sayHi("Amulya")
 sayHi("Arvind")
 
 print(trainings.values())
+
+students = {
+    1 : {
+        "id" : 1,
+        "name" : "Akshay Rao",
+        "age" : 25,
+        "branch" : "CSE",
+        "course" : "Python Full Stack"
+    },
+    2 : {
+        "id" : 2,
+        "name" : "Ajay Rao",
+        "age" : 24,
+        "branch" : "ISE",
+        "course" : "Java Full Stack"
+    },
+    3 : {
+        "id" : 2,
+        "name" : "Ajay Rao",
+        "age" : 24,
+        "branch" : "ISE",
+        "course" : "Java Full Stack"
+    }
+}
+
+print(students.keys())
+print(max(students.keys()))
+
+students[4] = {
+        "name" : "Akash",
+        "age" : 24,
+        "branch" : "ISE",
+        "course" : "Java Full Stack"
+    }
+
+
+print(students)
+
+del students[4]
+
+print(students)

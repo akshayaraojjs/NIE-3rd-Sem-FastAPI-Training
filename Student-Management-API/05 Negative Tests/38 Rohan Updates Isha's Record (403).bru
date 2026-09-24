@@ -1,0 +1,38 @@
+meta {
+  name: 38 Rohan Updates Isha's Record (403)
+  type: http
+  seq: 38
+}
+
+put {
+  url: {{base_url}}/students/{{isha_id}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{student_token}}
+}
+
+body:json {
+  {
+    "age": 99
+  }
+}
+
+tests {
+  test("Status is 403", function() {
+    expect(res.status).to.equal(403);
+  });
+}
+
+docs {
+  38 Rohan Updates Isha's Record (403).
+  Endpoint: PUT {{base_url}}/students/{{isha_id}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

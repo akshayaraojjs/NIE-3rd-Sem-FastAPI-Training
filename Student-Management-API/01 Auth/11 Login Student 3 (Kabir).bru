@@ -1,0 +1,41 @@
+meta {
+  name: 11 Login Student 3 (Kabir)
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{base_url}}/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:text {
+  username=kabir_student&password=kabir%40123
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("kabir_token", res.body.access_token);
+  }
+}
+
+tests {
+  test("Request completed", function() {
+    expect(res.status).to.be.within(200, 299);
+  });
+}
+
+docs {
+  11 Login Student 3 (Kabir).
+  Endpoint: POST {{base_url}}/login
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

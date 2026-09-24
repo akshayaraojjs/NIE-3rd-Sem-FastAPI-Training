@@ -1,0 +1,45 @@
+meta {
+  name: 05 Register Student 2 (Isha)
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{base_url}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "isha_student",
+    "password": "isha@123",
+    "role": 3
+  }
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("student2_user_id", res.body.id);
+  }
+}
+
+tests {
+  test("Role is student", function() {
+    expect(res.body.role).to.equal(3);
+  });
+}
+
+docs {
+  05 Register Student 2 (Isha).
+  Endpoint: POST {{base_url}}/users
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

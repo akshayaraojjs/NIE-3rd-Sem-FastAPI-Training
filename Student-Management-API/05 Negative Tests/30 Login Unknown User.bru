@@ -1,0 +1,35 @@
+meta {
+  name: 30 Login Unknown User
+  type: http
+  seq: 30
+}
+
+post {
+  url: {{base_url}}/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:text {
+  username=ghost&password=whatever
+}
+
+tests {
+  test("Status is 401", function() {
+    expect(res.status).to.equal(401);
+  });
+}
+
+docs {
+  30 Login Unknown User.
+  Endpoint: POST {{base_url}}/login
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

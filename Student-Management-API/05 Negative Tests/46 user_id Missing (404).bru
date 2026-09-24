@@ -1,0 +1,41 @@
+meta {
+  name: 46 user_id Missing (404)
+  type: http
+  seq: 46
+}
+
+post {
+  url: {{base_url}}/students
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{admin_token}}
+}
+
+body:json {
+  {
+    "name": "Kabir Singh",
+    "age": 20,
+    "course": "Physics",
+    "user_id": "000000000000000000000000"
+  }
+}
+
+tests {
+  test("Status is 404", function() {
+    expect(res.status).to.equal(404);
+  });
+}
+
+docs {
+  46 user_id Missing (404).
+  Endpoint: POST {{base_url}}/students
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

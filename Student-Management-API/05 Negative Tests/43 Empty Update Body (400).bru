@@ -1,0 +1,36 @@
+meta {
+  name: 43 Empty Update Body (400)
+  type: http
+  seq: 43
+}
+
+put {
+  url: {{base_url}}/students/{{rohan_id}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{admin_token}}
+}
+
+body:json {
+  {}
+}
+
+tests {
+  test("Status is 400", function() {
+    expect(res.status).to.equal(400);
+  });
+}
+
+docs {
+  43 Empty Update Body (400).
+  Endpoint: PUT {{base_url}}/students/{{rohan_id}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

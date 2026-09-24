@@ -1,0 +1,31 @@
+meta {
+  name: 36 Teacher Hits /students/me (403)
+  type: http
+  seq: 36
+}
+
+get {
+  url: {{base_url}}/students/me
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{teacher_token}}
+}
+
+tests {
+  test("Status is 403", function() {
+    expect(res.status).to.equal(403);
+  });
+}
+
+docs {
+  36 Teacher Hits /students/me (403).
+  Endpoint: GET {{base_url}}/students/me
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

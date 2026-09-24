@@ -1,0 +1,31 @@
+meta {
+  name: 51 Admin Deletes Aarav Again (404)
+  type: http
+  seq: 51
+}
+
+delete {
+  url: {{base_url}}/students/{{aarav_id}}
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{admin_token}}
+}
+
+tests {
+  test("Status is 404", function() {
+    expect(res.status).to.equal(404);
+  });
+}
+
+docs {
+  51 Admin Deletes Aarav Again (404).
+  Endpoint: DELETE {{base_url}}/students/{{aarav_id}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

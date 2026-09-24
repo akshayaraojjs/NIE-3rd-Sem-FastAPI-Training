@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HTML elements can be categorized into 2 type: Block & Inline elements -->
+    <!-- Block-level elements - Blocks or occupies entire line -->
+    <!-- Inline elements - Allows other elements to occupy the available space in the line -->
+    <form>
+        <h1>Registration Form</h1>
+        <label for="username">Name:</label> 
+        <input type="text" name="username" id="username"><br><br>
+        <label for="age">Age:</label> 
+        <input type="number" name="age" id="age"><br><br>
+        <label for="email_id">Email ID:</label>
+        <input type="email" name="email_id" id="email_id"><br><br>
+        <label for="password">Password:</label> 
+        <input type="password" name="password" id="password"><br><br>
+        <label for="phone">Phone Number:</label>   
+        <input type="tel" name="phone" id="phone"><br><br>
+        <label for="dob">DOB:</label>  
+        <input type="date" name="dob" id="dob"><br><br>
+        <label for="address">Address:</label>  
+        <textarea name="address" id="address" rows="5" cols="50"></textarea><br><br>
+        <label for="gender">Gender:</label>
+        <input class="custom-fields" type="radio" name="gender" id="male" value="Male">
+        <label for="male">Male</label>
+        <input class="custom-fields" type="radio" name="gender" id="female" value="Female">
+        <label for="female">Female</label><br><br>
+        <label for="course">Course:</label>
+        <input class="custom-fields" type="checkbox" name="course1" id="c_programming" value="C Programming">
+        <label for="c_programming">C Programming</label>
+        <input class="custom-fields" type="checkbox" name="course2" id="c_plus_plus" value="C++">
+        <label for="c_plus_plus">C++</label>
+        <input class="custom-fields" type="checkbox" name="course3" id="java" value="Java">
+        <label for="java">Java</label>
+        <input class="custom-fields" type="checkbox" name="course4" id="python" value="Python">
+        <label for="python">Python</label><br><br>
+        <label for="city">City:</label>
+        <select name="city" id="city">
+            <option selected>Select your city</option>
+            <option value="Bengaluru">Bengaluru</option>
+            <option value="Tumakuru">Tumakuru</option>
+            <option value="Mysuru">Mysuru</option>
+            <option value="Mangaluru">Mangaluru</option>
+            <option value="Raichur">Raichur</option>
+        </select><br><br>
+        <label for="photo">Upload Picture:</label>
+        <input type="file" name="photo" id="photo" accept="image/*"><br><br>
+        <div class="buttons">
+            <input class="button reset-btn" type="reset" value="Clear Form">
+            <input class="button submit-btn" type="submit" value="Submit Form">
+        </div>
+    </form>
+</body>
+</html>

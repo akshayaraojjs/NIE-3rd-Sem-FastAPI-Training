@@ -1,0 +1,41 @@
+meta {
+  name: 09 Login Student 1 (Rohan)
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{base_url}}/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:text {
+  username=rohan_student&password=rohan%40123
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("student_token", res.body.access_token);
+  }
+}
+
+tests {
+  test("Request completed", function() {
+    expect(res.status).to.be.within(200, 299);
+  });
+}
+
+docs {
+  09 Login Student 1 (Rohan).
+  Endpoint: POST {{base_url}}/login
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,41 @@
+meta {
+  name: 48 Link Already-Linked User (409)
+  type: http
+  seq: 48
+}
+
+post {
+  url: {{base_url}}/students
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{admin_token}}
+}
+
+body:json {
+  {
+    "name": "Kabir Singh",
+    "age": 20,
+    "course": "Physics",
+    "user_id": "{{student_user_id}}"
+  }
+}
+
+tests {
+  test("Status is 409", function() {
+    expect(res.status).to.equal(409);
+  });
+}
+
+docs {
+  48 Link Already-Linked User (409).
+  Endpoint: POST {{base_url}}/students
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

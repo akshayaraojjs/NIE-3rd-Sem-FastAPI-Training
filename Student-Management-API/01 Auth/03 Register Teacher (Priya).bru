@@ -1,0 +1,45 @@
+meta {
+  name: 03 Register Teacher (Priya)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "priya_teacher",
+    "password": "priya@123",
+    "role": 2
+  }
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("teacher_user_id", res.body.id);
+  }
+}
+
+tests {
+  test("Role is teacher", function() {
+    expect(res.body.role).to.equal(2);
+  });
+}
+
+docs {
+  03 Register Teacher (Priya).
+  Endpoint: POST {{base_url}}/users
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

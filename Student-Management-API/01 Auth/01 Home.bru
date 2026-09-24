@@ -1,0 +1,21 @@
+meta {
+  name: 01 Home
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/
+  body: none
+  auth: none
+}
+
+docs {
+  01 Home.
+  Endpoint: GET {{base_url}}/
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

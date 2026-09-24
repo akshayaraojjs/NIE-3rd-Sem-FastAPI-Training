@@ -1,0 +1,48 @@
+meta {
+  name: 02 Register Admin (Aarav)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "aarav_admin",
+    "password": "aarav@123",
+    "role": 1
+  }
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("admin_user_id", res.body.id);
+  }
+}
+
+tests {
+  test("Status is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  test("Role is admin", function() {
+    expect(res.body.role).to.equal(1);
+  });
+}
+
+docs {
+  02 Register Admin (Aarav).
+  Endpoint: POST {{base_url}}/users
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

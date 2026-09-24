@@ -1,0 +1,38 @@
+meta {
+  name: 21 Teacher Updates Ananya Iyer
+  type: http
+  seq: 21
+}
+
+put {
+  url: {{base_url}}/students/{{ananya_id}}
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{teacher_token}}
+}
+
+body:json {
+  {
+    "course": "Machine Learning"
+  }
+}
+
+tests {
+  test("Status is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}
+
+docs {
+  21 Teacher Updates Ananya Iyer.
+  Endpoint: PUT {{base_url}}/students/{{ananya_id}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

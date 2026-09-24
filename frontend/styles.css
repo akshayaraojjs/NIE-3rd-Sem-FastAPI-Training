@@ -1,0 +1,54 @@
+/* This is a CSS Comment */
+/* CSS - Cascading Style Sheets */
+
+/* Used for Designing Purpose */
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: Brown;
+    text-decoration: underline;
+}
+
+form{
+    border: 5px solid black;
+    padding: 40px;
+    margin: 60px;
+}
+
+label{
+    font-weight: bold;
+    color: darkblue;
+    font-size: 20px;
+}
+
+input, textarea, select{
+    width: 100%;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.custom-fields{
+    width: auto;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+.submit-btn{
+    color: black;
+    background-color: lightgreen;
+}
+
+.reset-btn{
+    color: black;
+    background-color: lightcoral;
+}

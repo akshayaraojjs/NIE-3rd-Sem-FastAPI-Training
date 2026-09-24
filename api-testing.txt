@@ -1,0 +1,22 @@
+POST 
+http://127.0.0.1/users
+
+Request:
+{
+  "username" : "admin",
+  "password" : "admin@123",
+  "role" : 1
+}
+
+Response:
+{
+  "id": "6ab3844049a717c65d1f9868",
+  "username": "admin",
+  "role": 1
+}
+
+Admin Access:
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOjEsImV4cCI6MTc5MDE2MTUwNX0.kqBVLpRpNbOmu_STyKDbywUb1aZFv21JMSn6KkTOJEE",
+  "token_type": "bearer"
+}

@@ -1,0 +1,31 @@
+meta {
+  name: 41 Invalid ObjectId (400)
+  type: http
+  seq: 41
+}
+
+get {
+  url: {{base_url}}/students/not-an-id
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{admin_token}}
+}
+
+tests {
+  test("Status is 400", function() {
+    expect(res.status).to.equal(400);
+  });
+}
+
+docs {
+  41 Invalid ObjectId (400).
+  Endpoint: GET {{base_url}}/students/not-an-id
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

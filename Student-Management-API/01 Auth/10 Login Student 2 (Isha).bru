@@ -1,0 +1,41 @@
+meta {
+  name: 10 Login Student 2 (Isha)
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{base_url}}/login
+  body: text
+  auth: none
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded
+}
+
+body:text {
+  username=isha_student&password=isha%40123
+}
+
+script:post-response {
+  if (res.status >= 200 && res.status < 300) {
+    bru.setEnvVar("student2_token", res.body.access_token);
+  }
+}
+
+tests {
+  test("Request completed", function() {
+    expect(res.status).to.be.within(200, 299);
+  });
+}
+
+docs {
+  10 Login Student 2 (Isha).
+  Endpoint: POST {{base_url}}/login
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
